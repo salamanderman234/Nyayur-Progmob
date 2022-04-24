@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Nyayur</string>
-
+    <string name="toRegister"><u>Belum Punya Akun ? Daftar Disini</u></string>
+    <string name="toLogin"><u>Sudah Punya Akun ?</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

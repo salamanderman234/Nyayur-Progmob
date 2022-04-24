@@ -1,29 +1,31 @@
 package com.example.nyayur;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-//import android.view.View;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+//import android.view.View;
+
 public class LoginActivity extends AppCompatActivity {
-    EditText email,password;
-    Button loginbtn;
-    TextView toRegister;
-    DbHelper db;
+    protected TextInputEditText email,password;
+    protected Button loginbtn;
+    protected TextView toRegister;
+    protected DbHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        email = (EditText) findViewById(R.id.emailRegisterLayout);
-        password = (EditText) findViewById(R.id.passwordRegister);
-        loginbtn = (Button) findViewById(R.id.registerbtn);
+        email = (TextInputEditText) findViewById(R.id.email);
+        password = (TextInputEditText) findViewById(R.id.password);
+        loginbtn = (Button) findViewById(R.id.loginbtn);
         toRegister = (TextView) findViewById(R.id.toRegister);
 
         Bundle extras = getIntent().getExtras();
@@ -31,7 +33,8 @@ public class LoginActivity extends AppCompatActivity {
             email.setText(extras.getString("emailRegis"));
             password.setText(extras.getString("passwdRegis"));
         }
-        db = new DbHelper(this);
+        try (DbHelper dbHelper = db = new DbHelper(this)) {
+        }
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
         toRegister.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
         });
     }
