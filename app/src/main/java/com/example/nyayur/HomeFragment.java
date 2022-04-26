@@ -1,12 +1,22 @@
 package com.example.nyayur;
 
+import android.media.Image;
 import android.os.Bundle;
 
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +70,16 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ImageSlider imageSlider = (ImageSlider) view.findViewById(R.id.promoSlider);
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("https://bit.ly/2YoJ77H",ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://bit.ly/2BteuF2",ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://bit.ly/3fLJf72",ScaleTypes.FIT));
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
     }
 }
