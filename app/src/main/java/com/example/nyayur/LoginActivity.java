@@ -44,12 +44,15 @@ public class LoginActivity extends AppCompatActivity {
                 if(credmail.isEmpty()||credpassword.isEmpty()){
                     Toast.makeText(LoginActivity.this, "Please enter all fields !", Toast.LENGTH_SHORT).show();
                 }else {
-                    if(db.checkCredentials(credmail,credpassword)){
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(LoginActivity.this, "Wrong credentials", Toast.LENGTH_SHORT).show();
-                    }
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    intent.putExtra("email",credmail);
+                    startActivity(intent);
+//                    if(db.checkCredentials(credmail,credpassword)){
+//                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//                        startActivity(intent);
+//                    }else {
+//                        Toast.makeText(LoginActivity.this, "Wrong credentials", Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         });

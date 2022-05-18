@@ -1,19 +1,27 @@
 package com.example.nyayur;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.textfield.TextInputEditText;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +32,6 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -76,6 +83,26 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ImageSlider imageSlider = (ImageSlider) view.findViewById(R.id.promoSlider);
+        TextInputEditText search = (TextInputEditText) view.findViewById(R.id.searchBar);
+
+        search.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                    (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    String keyword = search.getText().toString();
+
+                    Intent intent = new Intent(getActivity(),RegisterActivity.class);
+                    intent.putExtra("keyword",keyword);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
         List<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel("https://bit.ly/2YoJ77H",ScaleTypes.FIT));
         slideModels.add(new SlideModel("https://bit.ly/2BteuF2",ScaleTypes.FIT));
