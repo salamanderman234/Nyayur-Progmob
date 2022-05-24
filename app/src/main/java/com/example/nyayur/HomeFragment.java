@@ -88,8 +88,7 @@ public class HomeFragment extends Fragment {
         search.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                    (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                if ((keyCode == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
                     String keyword = search.getText().toString();
 
@@ -109,4 +108,9 @@ public class HomeFragment extends Fragment {
         slideModels.add(new SlideModel("https://bit.ly/3fLJf72",ScaleTypes.FIT));
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
     }
+
+    public void cardClick(){
+        //
+    }
+
 }

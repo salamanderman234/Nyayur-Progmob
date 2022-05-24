@@ -254,7 +254,8 @@
                             app:strokeWidth="1dp"
                             android:layout_marginEnd="5dp"
                             android:layout_marginBottom="5dp"
-                            app:strokeColor="@color/black">
+                            app:strokeColor="@color/black"
+                            android:onClick="cardClick">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
