@@ -4,4 +4,40 @@
     <string name="toLogin"><u>Sudah Punya Akun ?</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="product_name_strings">
+        <item>Buah Kiwi</item>
+        <item>Buah Apel</item>
+        <item>Buah Lemon</item>
+        <item>Buah Alpukat</item>
+    </string-array>
+    <string-array name="product_price_strings">
+        <item>30000</item>
+        <item>20000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </string-array>
+    <string-array name="product_pembelian_strings">
+        <item>per 100 gram</item>
+        <item>per 1 kg</item>
+        <item>per 100 gram</item>
+        <item>per 100 gram</item>
+    </string-array>
+    <string-array name="product_thumbnail_strings">
+        <item>ic_fruit</item>
+        <item>ic_apple</item>
+        <item>ic__rambutan</item>
+        <item>ic_apple_madura</item>
+    </string-array>
+    <string-array name="product_deskripsi_strings">
+        <item>buah.</item>
+        <item>buah</item>
+        <item>buah</item>
+        <item>buah</item>
+    </string-array>
+    <string-array name="product_stock_strings">
+        <item>10 kg</item>
+        <item>15 kg</item>
+        <item>10 kg</item>
+        <item>55 kg</item>
+    </string-array>
 </resources>

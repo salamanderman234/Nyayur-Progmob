@@ -1,5 +1,6 @@
 package com.example.nyayur;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -15,10 +16,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.w3c.dom.Text;
@@ -36,6 +40,8 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public int[] products = {0,1,2,3};
+    public String[][] detail_product = new String[4][6];
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -82,9 +88,75 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        TextView[] tittles =  {
+            (TextView) view.findViewById(R.id.titleProduct1),
+            (TextView) view.findViewById(R.id.titleProduct2),
+            (TextView) view.findViewById(R.id.titleProduct3),
+            (TextView) view.findViewById(R.id.titleProduct4)
+        };
+        ImageView[] images = {
+            (ImageView) view.findViewById(R.id.imageProduct1),
+            (ImageView) view.findViewById(R.id.imageProduct2),
+            (ImageView) view.findViewById(R.id.imageProduct3),
+            (ImageView) view.findViewById(R.id.imageProduct4),
+        };
+        TextView[] prices = {
+            (TextView) view.findViewById(R.id.hargaProduct1),
+            (TextView) view.findViewById(R.id.hargaProduct2),
+            (TextView) view.findViewById(R.id.hargaProduct3),
+            (TextView) view.findViewById(R.id.hargaProduct4),
+        };
+
+        detail_product = new String[][]{
+            {"Kiwi Impor", "Rp200.000", "per 1 gram","2 gram","Segar","Kiwi merupakan buah eksotis yang mampu memikat segala jenis kalangan dengan kecantikan tampilan buahnya","ic_fruit"},
+            {"Apel Madura", "Rp20.000", "per 1 gram","6 gram","Segar","Apel merupakan buah eksotis","ic_apple"},
+            {"Rambutan", "Rp20.000", "per 1 gram","6 gram","Segar","Apel merupakan buah eksotis","ic__rambutan"},
+            {"Apel Cikarang", "Rp20.000", "per 1 gram","6 gram","Segar","Apel merupakan buah eksotis","ic_apple_madura"},
+        };
+
+        for(int i=0;i<4;i++){
+            tittles[i].setText(detail_product[i][0]);
+            prices[i].setText(detail_product[i][1]);
+            Context context = images[i].getContext();
+            int id = context.getResources().getIdentifier(detail_product[i][6], "drawable", context.getPackageName());
+            images[i].setImageResource(id);
+
+            tittles[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int id = Integer.parseInt(view.getTag().toString()) -1;
+
+                    Intent intent = new Intent(getActivity(),ProductDetailActivity.class);
+                    intent.putExtra("id",id);
+                    intent.putExtra("tittle",detail_product[id][0]);
+                    intent.putExtra("price",detail_product[id][1]);
+                    intent.putExtra("pembelian",detail_product[id][2]);
+                    intent.putExtra("stock",detail_product[id][3]);
+                    intent.putExtra("kondisi",detail_product[id][4]);
+                    intent.putExtra("deskripsi",detail_product[id][5]);
+                    intent.putExtra("image",detail_product[id][6]);
+
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        MaterialToolbar toolbar = (MaterialToolbar) view.findViewById(R.id.topAppBar);
         ImageSlider imageSlider = (ImageSlider) view.findViewById(R.id.promoSlider);
         TextInputEditText search = (TextInputEditText) view.findViewById(R.id.searchBar);
 
+        toolbar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()){
+                case R.id.cart:
+                    Intent intent = new Intent(getActivity(),CartActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        });
         search.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // If the event is a key-down event on the "enter" button
@@ -109,8 +181,5 @@ public class HomeFragment extends Fragment {
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
     }
 
-    public void cardClick(){
-        //
-    }
 
 }

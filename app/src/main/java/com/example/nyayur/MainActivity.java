@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.nyayur.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.setSelectedItemId(R.id.home);
         ///////////////////////////////////////
     }
+
     //mengganti layout dengan fragment yang spesifik
     public void replaceLayout(Fragment fragment,String extras){
         if(extras!=null){
@@ -65,4 +68,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.layout,fragment);
         fragmentTransaction.commit();
     }
+
+
 }

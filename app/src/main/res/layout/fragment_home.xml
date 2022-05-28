@@ -261,6 +261,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
                                 <ImageView
+                                    android:id="@+id/imageProduct1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     app:srcCompat="@drawable/ic_fruit"
@@ -273,6 +274,7 @@
                                     android:padding="16dp">
 
                                     <TextView
+                                        android:tag="1"
                                         android:id="@+id/titleProduct1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -308,6 +310,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
                                 <ImageView
+                                    android:id="@+id/imageProduct2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     app:srcCompat="@drawable/ic_fruit"
@@ -320,6 +323,7 @@
                                     android:padding="16dp">
 
                                     <TextView
+                                        android:tag="2"
                                         android:id="@+id/titleProduct2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -355,6 +359,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
                                 <ImageView
+                                    android:id="@+id/imageProduct3"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     app:srcCompat="@drawable/ic_fruit"
@@ -367,6 +372,7 @@
                                     android:padding="16dp">
 
                                     <TextView
+                                        android:tag="3"
                                         android:id="@+id/titleProduct3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -401,6 +407,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
                                 <ImageView
+                                    android:id="@+id/imageProduct4"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     app:srcCompat="@drawable/ic_fruit"
@@ -413,6 +420,7 @@
                                     android:padding="16dp">
 
                                     <TextView
+                                        android:tag="4"
                                         android:id="@+id/titleProduct4"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
