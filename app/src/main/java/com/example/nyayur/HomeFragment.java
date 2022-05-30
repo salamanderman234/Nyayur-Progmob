@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("deskripsi",detail_product[id][5]);
                     intent.putExtra("image",detail_product[id][6]);
 
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
                     startActivity(intent);
                 }
             });

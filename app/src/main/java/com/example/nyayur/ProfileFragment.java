@@ -1,5 +1,6 @@
 package com.example.nyayur;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -79,6 +80,16 @@ public class ProfileFragment extends Fragment {
             TextView userEmail = view.findViewById(R.id.userEmail);
             userEmail.setText(bundle.getString("email", "User Baru"));
         }
+
+        TextView favoriteIcon = (TextView) view.findViewById(R.id.favoriteIcon);
+        favoriteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),FavoriteActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
 
     }
 }

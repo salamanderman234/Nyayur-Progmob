@@ -7,15 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
-
+public class WishListActivity extends AppCompatActivity {
     ArrayList<ProductModel> productModels = new ArrayList<>();
-    Bundle extras;
     ProductRecycleViewAdapter adapter;
+    Bundle extras;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -45,8 +43,6 @@ public class CartActivity extends AppCompatActivity {
                 harga,
                 stock
             ));
-            Toast.makeText(getApplicationContext(),extras.getString("name"),Toast.LENGTH_LONG);
-
             getIntent().removeExtra("image");
             getIntent().removeExtra("nama");
             getIntent().removeExtra("pembelian");
@@ -54,47 +50,22 @@ public class CartActivity extends AppCompatActivity {
             getIntent().removeExtra("deskripsi");
             getIntent().removeExtra("harga");
             getIntent().removeExtra("stock");
-
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
-
+        setContentView(R.layout.activity_wish_list);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-//        setUpProductModels();
-
         adapter = new ProductRecycleViewAdapter(this,productModels);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
     public void back(View view){
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
-    }
-    private void setUpProductModels(){
-        String[] productNames = getResources().getStringArray(R.array.product_name_strings);
-        String[] productDeskripsis = getResources().getStringArray(R.array.product_deskripsi_strings);
-        String[] productHargas = getResources().getStringArray(R.array.product_price_strings);
-        String[] productPembelians = getResources().getStringArray(R.array.product_pembelian_strings);
-        String[] productThumbnails = getResources().getStringArray(R.array.product_thumbnail_strings);
-        String[] productStock = getResources().getStringArray(R.array.product_stock_strings);
-
-        for (int i=0;i< productNames.length;i++){
-            productModels.add(new ProductModel(
-                productThumbnails[i],
-                productNames[i],
-                productPembelians[i],
-                "Segar",
-                productDeskripsis[i],
-                Integer.parseInt(productHargas[i]),
-                productStock[i]
-                )
-            );
-        }
-
     }
 }

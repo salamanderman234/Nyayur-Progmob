@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nyayur">
         <activity
+            android:name=".TransasctionDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WishListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FavoriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".CartActivity"
             android:exported="false" />
         <activity

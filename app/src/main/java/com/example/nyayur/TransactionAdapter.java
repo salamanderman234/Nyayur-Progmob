@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ProductRecycleViewAdapter extends RecyclerView.Adapter<ProductRecycleViewAdapter.MyViewHolder> {
-
+public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.MyViewHolder>  {
     Context context;
     ArrayList<ProductModel> productModels;
-    public ProductRecycleViewAdapter(Context context, ArrayList<ProductModel> productModels){
+
+    public TransactionAdapter(Context context, ArrayList<ProductModel> productModels){
         this.context = context;
         this.productModels = productModels;
     }
@@ -27,14 +27,14 @@ public class ProductRecycleViewAdapter extends RecyclerView.Adapter<ProductRecyc
     }
     @NonNull
     @Override
-    public ProductRecycleViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TransactionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.cart_row,parent,false);
-        return new ProductRecycleViewAdapter.MyViewHolder(view).linkAdapter(this);
+        View view = layoutInflater.inflate(R.layout.transaction_row,parent,false);
+        return new TransactionAdapter.MyViewHolder(view).linkAdapter(this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductRecycleViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TransactionAdapter.MyViewHolder holder, int position) {
 
         Context context = holder.thumbnail.getContext();
         int id = context.getResources().getIdentifier(productModels.get(position).thumbnail, "drawable", context.getPackageName());
@@ -54,20 +54,16 @@ public class ProductRecycleViewAdapter extends RecyclerView.Adapter<ProductRecyc
 
         ImageView thumbnail;
         TextView tittle, harga, qty;
-        private ProductRecycleViewAdapter adapter;
+        private TransactionAdapter adapter;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             thumbnail = itemView.findViewById(R.id.product);
             tittle = itemView.findViewById(R.id.productName);
             harga = itemView.findViewById(R.id.harga);
             qty = itemView.findViewById(R.id.qty);
-            itemView.findViewById(R.id.deleteIcon).setOnClickListener(view -> {
-                adapter.productModels.remove(getAdapterPosition());
-                adapter.notifyItemRemoved(getAdapterPosition());
-            });
 
         }
-        public MyViewHolder linkAdapter(ProductRecycleViewAdapter adapter){
+        public TransactionAdapter.MyViewHolder linkAdapter(TransactionAdapter adapter){
             this.adapter = adapter;
             return this;
         }

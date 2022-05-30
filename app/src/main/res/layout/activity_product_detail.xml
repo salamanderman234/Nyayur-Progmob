@@ -101,12 +101,24 @@
 
                 <ImageView
                     android:id="@+id/favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
-                    android:src="@drawable/ic_favorite_unfilled"
+                    android:onClick="favorite"
+                    android:src="@drawable/ic_favorite_filled"
                     app:layout_constraintStart_toEndOf="@+id/share"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/wishlist"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="10dp"
+                    android:onClick="wishlist"
+                    android:src="@drawable/ic_wishlist"
+                    app:layout_constraintStart_toEndOf="@+id/favorite"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -194,6 +206,7 @@
 
                     <Button
                         android:id="@+id/keranjang"
+                        android:onClick="cart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="48dp"
@@ -212,6 +225,7 @@
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#46B950"
                         android:text="Beli"
+                        android:onClick="transaction"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.171"
                         app:layout_constraintStart_toEndOf="@+id/keranjang"

@@ -7,15 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
+public class TransasctionDetailActivity extends AppCompatActivity {
 
     ArrayList<ProductModel> productModels = new ArrayList<>();
+    TransactionAdapter adapter;
     Bundle extras;
-    ProductRecycleViewAdapter adapter;
+    TextView total;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -45,8 +46,9 @@ public class CartActivity extends AppCompatActivity {
                 harga,
                 stock
             ));
-            Toast.makeText(getApplicationContext(),extras.getString("name"),Toast.LENGTH_LONG);
 
+            total = findViewById(R.id.total);
+            total.setText("Rp."+Integer.toString(harga));
             getIntent().removeExtra("image");
             getIntent().removeExtra("nama");
             getIntent().removeExtra("pembelian");
@@ -55,18 +57,17 @@ public class CartActivity extends AppCompatActivity {
             getIntent().removeExtra("harga");
             getIntent().removeExtra("stock");
 
+
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
-
+        setContentView(R.layout.activity_transasction_detail);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-//        setUpProductModels();
-
-        adapter = new ProductRecycleViewAdapter(this,productModels);
+        adapter = new TransactionAdapter(this,productModels);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -74,27 +75,5 @@ public class CartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
-    }
-    private void setUpProductModels(){
-        String[] productNames = getResources().getStringArray(R.array.product_name_strings);
-        String[] productDeskripsis = getResources().getStringArray(R.array.product_deskripsi_strings);
-        String[] productHargas = getResources().getStringArray(R.array.product_price_strings);
-        String[] productPembelians = getResources().getStringArray(R.array.product_pembelian_strings);
-        String[] productThumbnails = getResources().getStringArray(R.array.product_thumbnail_strings);
-        String[] productStock = getResources().getStringArray(R.array.product_stock_strings);
-
-        for (int i=0;i< productNames.length;i++){
-            productModels.add(new ProductModel(
-                productThumbnails[i],
-                productNames[i],
-                productPembelians[i],
-                "Segar",
-                productDeskripsis[i],
-                Integer.parseInt(productHargas[i]),
-                productStock[i]
-                )
-            );
-        }
-
     }
 }
