@@ -91,5 +91,25 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        TextView wishListIcon = (TextView) view.findViewById(R.id.wishlistIcon);
+        wishListIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),WishListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
+
+        TextView transctionIcon = (TextView) view.findViewById(R.id.transactionIcon);
+        transctionIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),TransactionListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
+
     }
 }

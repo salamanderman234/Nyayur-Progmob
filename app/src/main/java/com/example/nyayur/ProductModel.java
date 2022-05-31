@@ -1,6 +1,8 @@
 package com.example.nyayur;
 
-public class ProductModel {
+import java.io.Serializable;
+
+public class ProductModel implements Serializable {
     String thumbnail, nama, pembelian, kondisi, deskripsi, stock;
     int harga;
 

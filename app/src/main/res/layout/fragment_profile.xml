@@ -95,6 +95,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/wishlistIcon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Wishlist"
@@ -128,25 +129,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/favorite">
 
                         <TextView
+                            android:id="@+id/transactionIcon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Transaction List"
-                            android:textSize="20dp" />
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/ulasan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/daftarTransaksi">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Reviews"
                             android:textSize="20dp" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.constraintlayout.widget.ConstraintLayout>

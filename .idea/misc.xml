@@ -22,19 +22,21 @@
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout-large/activity_login.xml" value="0.152734375" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout-normal/activity_login.xml" value="0.35820894502642775" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout-small/activity_login.xml" value="0.7697368421052632" />
-        <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_cart.xml" value="0.2364179037174423" />
+        <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_cart.xml" value="0.17910447251321387" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_favorite.xml" value="0.16709401709401708" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_login.xml" value="0.16709401709401708" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_main.xml" value="0.1432835780105711" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_product_detail.xml" value="0.25" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_register.xml" value="0.4799999863354132" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_search.xml" value="0.17910447251321387" />
-        <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_transasction_detail.xml" value="0.5373134175396416" />
+        <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_transaction_list.xml" value="0.11495726495726495" />
+        <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_transasction_detail.xml" value="0.2364179037174423" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/activity_wish_list.xml" value="0.1" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/cart_row.xml" value="0.4799999863354132" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/fragment_home.xml" value="0.17910447251321387" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/fragment_profile.xml" value="0.12895522020951397" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/fragment_setting.xml" value="0.1" />
+        <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/transaction_list_row.xml" value="0.4799999863354132" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/layout/transaction_row.xml" value="0.16709401709401708" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/menu/bottom_nav_menu.xml" value="0.12222222222222222" />
         <entry key="..\:/Users/USER/OneDrive/Documents/Kuliah/Semester 4/Progmob/Nyayur/app/src/main/res/menu/top_app_bar.xml" value="0.16709401709401708" />

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ProductDetailActivity extends AppCompatActivity {
     TextView price, name, stockValue, pembelianValue, kondisiValue, deskripsi;
     Bundle extras;
@@ -21,7 +23,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.onResume();
         extras = getIntent().getExtras();
         if(extras != null){
-            price.setText(extras.getString("price"));
+            price.setText("Rp."+extras.getString("price"));
             name.setText(extras.getString("tittle"));
             stockValue.setText(extras.getString("stock"));
             pembelianValue.setText(extras.getString("pembelian"));
@@ -52,7 +54,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     public void favorite(View view){
         Intent intent = new Intent(ProductDetailActivity.this,FavoriteActivity.class);
         intent.putExtra("nama",extras.getString("tittle"));
-        intent.putExtra("harga","20000");
+        intent.putExtra("harga",extras.getString("price"));
         intent.putExtra("stock",extras.getString("stock"));
         intent.putExtra("pembelian",extras.getString("pembelian"));
         intent.putExtra("image",extras.getString("image"));
@@ -66,7 +68,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     public void wishlist(View view){
         Intent intent = new Intent(ProductDetailActivity.this,WishListActivity.class);
         intent.putExtra("nama",extras.getString("tittle"));
-        intent.putExtra("harga","20000");
+        intent.putExtra("harga",extras.getString("price"));
         intent.putExtra("stock",extras.getString("stock"));
         intent.putExtra("pembelian",extras.getString("pembelian"));
         intent.putExtra("image",extras.getString("image"));
@@ -81,7 +83,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     public void cart(View view){
         Intent intent = new Intent(getApplicationContext(),CartActivity.class);
         intent.putExtra("nama",extras.getString("tittle"));
-        intent.putExtra("harga","20000");
+        intent.putExtra("harga",extras.getString("price"));
         intent.putExtra("stock",extras.getString("stock"));
         intent.putExtra("pembelian",extras.getString("pembelian"));
         intent.putExtra("image",extras.getString("image"));
@@ -103,14 +105,19 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     public void transaction(View view){
         Intent intent = new Intent(getApplicationContext(),TransasctionDetailActivity.class);
-        intent.putExtra("nama",extras.getString("tittle"));
-        intent.putExtra("harga","20000");
-        intent.putExtra("stock",extras.getString("stock"));
-        intent.putExtra("pembelian",extras.getString("pembelian"));
-        intent.putExtra("image",extras.getString("image"));
-        intent.putExtra("deskripsi",extras.getString("deskipsi"));
-        intent.putExtra("kondisi",extras.getString("kondisi"));
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
+        ArrayList<ProductModel> productModels = new ArrayList<>();
+
+        productModels.add(new ProductModel(
+            extras.getString("image"),
+            extras.getString("tittle"),
+            extras.getString("pembelian"),
+            extras.getString("kondisi"),
+            extras.getString("deskipsi"),
+            Integer.parseInt(extras.getString("price")),
+            extras.getString("stock")
+            ));
+        intent.putExtra("data",productModels);
         startActivity(intent);
     }
     public void finish(View view){

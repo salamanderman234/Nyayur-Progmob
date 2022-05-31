@@ -75,26 +75,15 @@ public class CartActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
     }
-    private void setUpProductModels(){
-        String[] productNames = getResources().getStringArray(R.array.product_name_strings);
-        String[] productDeskripsis = getResources().getStringArray(R.array.product_deskripsi_strings);
-        String[] productHargas = getResources().getStringArray(R.array.product_price_strings);
-        String[] productPembelians = getResources().getStringArray(R.array.product_pembelian_strings);
-        String[] productThumbnails = getResources().getStringArray(R.array.product_thumbnail_strings);
-        String[] productStock = getResources().getStringArray(R.array.product_stock_strings);
 
-        for (int i=0;i< productNames.length;i++){
-            productModels.add(new ProductModel(
-                productThumbnails[i],
-                productNames[i],
-                productPembelians[i],
-                "Segar",
-                productDeskripsis[i],
-                Integer.parseInt(productHargas[i]),
-                productStock[i]
-                )
-            );
+
+    public void checkout(View view){
+        if(productModels.size()>0){
+            Intent intent = new Intent(this,TransasctionDetailActivity.class);
+            intent.putExtra("data",this.productModels);
+            startActivity(intent);
+        }else {
+            Toast.makeText(this,"Keranjang Sedang Kosong euy",Toast.LENGTH_LONG);
         }
-
     }
 }

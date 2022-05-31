@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class TransasctionDetailActivity extends AppCompatActivity {
 
@@ -17,6 +21,7 @@ public class TransasctionDetailActivity extends AppCompatActivity {
     TransactionAdapter adapter;
     Bundle extras;
     TextView total;
+    int totalHarga;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -28,36 +33,18 @@ public class TransasctionDetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         extras = getIntent().getExtras();
-        if(extras != null){
-            String image = extras.getString("image");
-            String nama = extras.getString("nama");
-            String pembelian = extras.getString("pembelian");
-            String kondisi = extras.getString("kondisi");
-            String deskripsi = extras.getString("deskripsi");
-            int harga = Integer.parseInt(extras.getString("harga"));
-            String stock= extras.getString("stock");
+        if(extras != null && extras.getSerializable("data") != null){
+            ArrayList<ProductModel> data = (ArrayList<ProductModel>) extras.getSerializable("data");
 
-            adapter.addItem(new ProductModel(
-                image,
-                nama,
-                pembelian,
-                kondisi,
-                deskripsi,
-                harga,
-                stock
-            ));
+            for(int i=0 ; i<data.size();i++){
+                adapter.addItem(data.get(i));
+                totalHarga += productModels.get(i).harga;
+            }
 
             total = findViewById(R.id.total);
-            total.setText("Rp."+Integer.toString(harga));
-            getIntent().removeExtra("image");
-            getIntent().removeExtra("nama");
-            getIntent().removeExtra("pembelian");
-            getIntent().removeExtra("kondisi");
-            getIntent().removeExtra("deskripsi");
-            getIntent().removeExtra("harga");
-            getIntent().removeExtra("stock");
+            total.setText("Rp."+Integer.toString(totalHarga));
 
-
+            getIntent().removeExtra("data");
         }
     }
 
@@ -73,6 +60,19 @@ public class TransasctionDetailActivity extends AppCompatActivity {
     }
     public void back(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
+    }
+
+    public void transactionSave(View view){
+        Intent intent = new Intent(this,TransactionListActivity.class);
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        intent.putExtra("tanggal",currentDate);
+        intent.putExtra("total",Integer.toString(totalHarga));
+        intent.putExtra("status","Berhasil");
+
+
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
     }

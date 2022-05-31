@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nyayur">
         <activity
+            android:name=".TransactionListActivity"
+            android:exported="false" />
+        <activity
             android:name=".TransasctionDetailActivity"
             android:exported="false" />
         <activity

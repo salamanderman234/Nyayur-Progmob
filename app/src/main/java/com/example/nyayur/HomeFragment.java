@@ -27,6 +27,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,8 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    ArrayList<ProductModel> productModels = new ArrayList<>();
+    ImageView vegetable, fruit, dapur;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -89,6 +92,37 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        vegetable = view.findViewById(R.id.vegetableIcon);
+        fruit = view.findViewById(R.id.fruitIcon);
+        dapur = view.findViewById(R.id.kebutuhanDapurIcon);
+        vegetable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
+                intent.putExtra("search","Vegetable");
+                startActivity(intent);
+            }
+        });
+
+        fruit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
+                intent.putExtra("search","Fruit");
+                startActivity(intent);
+            }
+        });
+
+        dapur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
+                intent.putExtra("search","Kebutuhan Dapur");
+                startActivity(intent);
+            }
+        });
+
+
         TextView[] tittles =  {
             (TextView) view.findViewById(R.id.titleProduct1),
             (TextView) view.findViewById(R.id.titleProduct2),
@@ -107,19 +141,13 @@ public class HomeFragment extends Fragment {
             (TextView) view.findViewById(R.id.hargaProduct3),
             (TextView) view.findViewById(R.id.hargaProduct4),
         };
-
-        detail_product = new String[][]{
-            {"Kiwi Impor", "Rp200.000", "per 1 gram","2 gram","Segar","Kiwi merupakan buah eksotis yang mampu memikat segala jenis kalangan dengan kecantikan tampilan buahnya","ic_fruit"},
-            {"Apel Madura", "Rp20.000", "per 1 gram","6 gram","Segar","Apel merupakan buah eksotis","ic_apple"},
-            {"Rambutan", "Rp20.000", "per 1 gram","6 gram","Segar","Apel merupakan buah eksotis","ic__rambutan"},
-            {"Apel Cikarang", "Rp20.000", "per 1 gram","6 gram","Segar","Apel merupakan buah eksotis","ic_apple_madura"},
-        };
+        setUpProductModels();
 
         for(int i=0;i<4;i++){
-            tittles[i].setText(detail_product[i][0]);
-            prices[i].setText(detail_product[i][1]);
+            tittles[i].setText(productModels.get(i).nama);
+            prices[i].setText("Rp."+Integer.toString(productModels.get(i).harga));
             Context context = images[i].getContext();
-            int id = context.getResources().getIdentifier(detail_product[i][6], "drawable", context.getPackageName());
+            int id = context.getResources().getIdentifier(productModels.get(i).thumbnail, "drawable", context.getPackageName());
             images[i].setImageResource(id);
 
             tittles[i].setOnClickListener(new View.OnClickListener() {
@@ -129,13 +157,13 @@ public class HomeFragment extends Fragment {
 
                     Intent intent = new Intent(getActivity(),ProductDetailActivity.class);
                     intent.putExtra("id",id);
-                    intent.putExtra("tittle",detail_product[id][0]);
-                    intent.putExtra("price",detail_product[id][1]);
-                    intent.putExtra("pembelian",detail_product[id][2]);
-                    intent.putExtra("stock",detail_product[id][3]);
-                    intent.putExtra("kondisi",detail_product[id][4]);
-                    intent.putExtra("deskripsi",detail_product[id][5]);
-                    intent.putExtra("image",detail_product[id][6]);
+                    intent.putExtra("tittle",productModels.get(id).nama);
+                    intent.putExtra("price",Integer.toString(productModels.get(id).harga));
+                    intent.putExtra("pembelian",productModels.get(id).pembelian);
+                    intent.putExtra("stock",productModels.get(id).stock);
+                    intent.putExtra("kondisi",productModels.get(id).kondisi);
+                    intent.putExtra("deskripsi",productModels.get(id).deskripsi);
+                    intent.putExtra("image",productModels.get(id).thumbnail);
 
 
                     startActivity(intent);
@@ -179,6 +207,29 @@ public class HomeFragment extends Fragment {
         slideModels.add(new SlideModel("https://bit.ly/2BteuF2",ScaleTypes.FIT));
         slideModels.add(new SlideModel("https://bit.ly/3fLJf72",ScaleTypes.FIT));
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+    }
+
+    private void setUpProductModels(){
+        String[] productNames = getResources().getStringArray(R.array.product_name_strings);
+        String[] productDeskripsis = getResources().getStringArray(R.array.product_deskripsi_strings);
+        String[] productHargas = getResources().getStringArray(R.array.product_price_strings);
+        String[] productPembelians = getResources().getStringArray(R.array.product_pembelian_strings);
+        String[] productThumbnails = getResources().getStringArray(R.array.product_thumbnail_strings);
+        String[] productStock = getResources().getStringArray(R.array.product_stock_strings);
+
+        for (int i=0;i< productNames.length;i++){
+            productModels.add(new ProductModel(
+                    productThumbnails[i],
+                    productNames[i],
+                    productPembelians[i],
+                    "Segar",
+                    productDeskripsis[i],
+                    Integer.parseInt(productHargas[i]),
+                    productStock[i]
+                )
+            );
+        }
+
     }
 
 
